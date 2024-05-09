@@ -3,7 +3,7 @@ from website.views import *
 
 urlpatterns = [
     # urls , view, name
-    path('home', index_view),
+    path('', index_view),
     path('contact', contact_view),
     path('about', about_view),
 
