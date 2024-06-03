@@ -3266,9 +3266,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 /* =================================== */
 /*============ Start Blog Home Styles  =============*/
 .blog-home-banner {
-  background: url(../img/blog/blog-home-banner.jpg) bottom;
+  background: url(../img/blog/blog-home-banner1.jpg) bottom;
   background-size: cover;
-  padding: 130px 0px;
+  padding: 100px 0px;
 }
 
 .blog-home-banner .primary-btn {
