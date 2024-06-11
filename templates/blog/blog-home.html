@@ -1,4 +1,6 @@
 {% load static %}
+{% load blog_tags %}
+
 	<!DOCTYPE html>
 	<html lang="zxx" class="no-js">
 	<head>
@@ -225,15 +227,19 @@
 							<div class="widget-wrap">
 								{% include 'blog/blog-search.html' %}
 
-									{% include 'blog/blog-writer.html'%}
+								{% include 'blog/blog-writer.html'%}
 
-								<div class="single-sidebar-widget popular-post-widget">
-									<h4 class="popular-title">Popular Posts</h4>
-									{% include 'blog/blog-popular-post.html' %}
-								</div>
+							
+								<!-- {% include 'blog/blog-popular-posts.html' %} -->
+								{% latestposts %}
+								
 								{% include 'blog/blog-ads.html' %}
-								{% include 'blog/blog-post-category.html' %}
+
+								<!-- {% include 'blog/blog-post-categories.html' %} -->
+								{% postcategories %}
+
 								{% include 'blog/blog-newsletter.html' %}
+								
 								{% include 'blog/blog-tags.html' %}								
 							</div>
 						</div>
