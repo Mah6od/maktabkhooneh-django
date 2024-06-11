@@ -25,8 +25,6 @@ def blog_view(request, **kwargs): # cat_name=None, author_username=None
         posts = posts.get_page(1)
     except EmptyPage:
         posts = posts.get_page(1)
-    
-
     context = {"posts":posts}
     return render(request, 'blog/blog-home.html', context)
 
