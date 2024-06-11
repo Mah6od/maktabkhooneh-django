@@ -50,3 +50,16 @@ def blog_category(request, cat_name):
     posts = posts.filter(category__name = cat_name)
     context = {'posts':posts}
     return render(request, 'blog/blog-home.html', context)
+
+def blog_search(request):
+    # print(request.__dict__)
+    now = timezone.now()
+    posts = Post.objects.filter(status = 1)
+    if request.method == 'GET':
+         # print(request.GET.get('s'))
+         if s := request.GET.get('s'): # Walrus
+            posts = posts.filter(content__contains=s)
+         
+    
+    context = {"posts":posts}
+    return render(request, 'blog/blog-home.html', context)
