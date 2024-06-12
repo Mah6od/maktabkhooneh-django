@@ -40,8 +40,8 @@ def blog_single(request, pid):
     post_index = list(posts).index(post)
 
     # Get previous and next posts
-    prev_post = posts[post_index - 1] if post_index > 0 else None
-    next_post = posts[post_index + 1] if post_index < len(posts) - 1 else None
+    next_post = posts[post_index - 1] if post_index > 0 else None
+    prev_post = posts[post_index + 1] if post_index < len(posts) - 1 else None
 
     context = {
         'post': post,

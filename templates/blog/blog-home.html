@@ -39,10 +39,10 @@
 					<div class="container">
 			  		<div class="row align-items-center">
 			  			<div class="col-lg-6 col-sm-6 col-6 header-top-left">
-			  				<ul>
+			  				<!-- <ul>
 			  					<li><a href="#">Visit Us</a></li>
 			  					<li><a href="#">Buy Tickets</a></li>
-			  				</ul>			
+			  				</ul> -->			
 			  			</div>
 			  			<div class="col-lg-6 col-sm-6 col-6 header-top-right">
 							<div class="header-social">
@@ -67,7 +67,7 @@
 				            <li><a href="{% url 'blog:index' %}">Blog</a></li>
 
 				          </li>	
-				          <li class="menu-has-children"><a href="">Pages</a>
+				        <!--<li class="menu-has-children"><a href="">Pages</a>
 				            <ul>
 				            	  <li><a href="elements.html">Elements</a></li>
 						          <li class="menu-has-children"><a href="">Level 2 </a>
@@ -77,9 +77,9 @@
 						            </ul>
 						          </li>					                		
 				            </ul>
-				          </li>					          					          		          
+				          </li>	-->				          					          		          
 				          <li><a href="{% url 'website:contact' %}">Contact</a></li>
-				        </ul>
+				        </ul> 
 				      </nav><!-- #nav-menu-container -->					      		  
 					</div>
 				</div>
@@ -256,6 +256,25 @@
 					</div>
 				</div>	
 			</section>
+			<script>
+				document.addEventListener("DOMContentLoaded", function() {
+				  const blogImages = document.querySelectorAll(".recent-blog-area .single-recent-blog-post .thumb img, .post-content-area .single-post .feature-img img");
+			  
+				  blogImages.forEach(image => {
+					image.onload = function() {
+					  if (image.naturalHeight > image.naturalWidth) {
+						image.classList.add("vertical-img");
+					  }
+					};
+					// Fallback for cached images
+					if (image.complete) {
+					  if (image.naturalHeight > image.naturalWidth) {
+						image.classList.add("vertical-img");
+					  }
+					}
+				  });
+				});
+			  </script>
 			<!-- End post-content Area -->
 			
 			<!-- start footer Area -->		
