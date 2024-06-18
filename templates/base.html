@@ -30,8 +30,29 @@
 		<link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
 		<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">				
 		<link rel="stylesheet" href="{% static 'css/main.css' %}">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+		
 	</head>
 	<body>	
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
+
+		<!-- Messages Block -->
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				{% if messages %}
+					{% for message in messages %}
+						Swal.fire({
+							icon: '{% if message.tags %}{{ message.tags }}{% else %}info{% endif %}',
+							title: '{{ message }}',
+							timer: 3000,
+							showConfirmButton: false
+						});
+					{% endfor %}
+				{% endif %}
+			});
+		</script>
+		<!-- End Messages Block -->
+		
 		<header id="header">
 			<div class="header-top">
 				<div class="container">
