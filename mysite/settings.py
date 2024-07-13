@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'robots',
     'debug_toolbar',
+    'taggit',
     
     'django_extensions',
     'website.apps.WebsiteConfig',
