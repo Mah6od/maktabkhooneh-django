@@ -1,4 +1,5 @@
 {% load static %}
+{% load blog_tags %}
 
 <section class="recent-blog-area section-gap">
     <div class="container">
@@ -30,9 +31,15 @@
                             </ul>
                         </div>
                         
-                        <a href="{% url 'blog:single' pid=post.id %}"><h4 class="title">{{ post.title }}</h4></a>
+                        <a href="{% url 'blog:single' pid=post.id %}">
+                            <h4 class="title" style="text-align: {% if post.title|is_persian %}right{% else %}left{% endif %};">
+                                {{ post.title }}
+                            </h4>
+                        </a>
                         <p>
-                            {{ post.content|truncatewords:25 }}
+                            {% autoescape off %}
+                            {{ post.content|truncatewords:30 }}
+                            {% endautoescape %}
                         </p>
                         <h6 class="date">{{ post.published_date|date:"D d M Y" }}</h6>
                     </div>	
