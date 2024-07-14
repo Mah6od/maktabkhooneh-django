@@ -23,6 +23,7 @@ class Post(models.Model):
     published_date = models.DateTimeField(null=True)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
+    language = models.CharField(max_length=2, choices=[('en', 'English'), ('fa', 'Persian')])
 
     class Meta:
         ordering = ['-created_date']
