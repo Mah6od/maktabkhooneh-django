@@ -1,6 +1,7 @@
 from django import template
 from blog.models import Post, Category
 from django.utils.text import slugify
+import re
 
 register = template.Library()
 
@@ -34,3 +35,8 @@ def postcategories():
         cat_dict[name] = posts.filter(category=name).count()
     return {'categories':cat_dict}
 
+
+@register.filter(name='is_persian')
+def is_persian(value):
+    persian_characters = re.compile('[\u0600-\u06FF]')
+    return bool(persian_characters.search(value))
