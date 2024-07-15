@@ -10,10 +10,11 @@ def contact_view(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            form.save()  # متد save بازنویسی شده مقدار name را به "ناشناس" تغییر می‌دهد
-            messages.success(request, 'Submitted Successfully!')
+            form.save()  
+            # messages.success(request, 'Submitted Successfully!')
+            messages.add_message(request, messages.SUCCESS, 'Submitted Successfully!')
         else:
-            messages.error(request, 'There is an Error!')
+            messages.add_message(request, messages.ERROR, 'There is an Error!')
     else:
         form = ContactForm()
         
