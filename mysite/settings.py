@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'website.apps.WebsiteConfig',
     'blog',
+    'accounts',
     'captcha',
 ]
 
