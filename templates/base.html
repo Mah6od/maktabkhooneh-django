@@ -58,12 +58,17 @@
 				<div class="container">
 				  <div class="row align-items-center">
 					  <div class="col-lg-6 col-sm-6 col-6 header-top-left">
-						<!--
+						
 						  <ul>
-							  <li><a href="#">Visit Us</a></li>
-							  <li><a href="#">Buy Tickets</a></li>
+							{% if request.user.is_authenticated %}
+							  <li><a href="">Logged in as {{ request.user.username }}</a></li>
+							{% else %}
+							  <li><a href="{% url 'accounts:login' %}">Login</a></li>
+							  <li><a href="#">Signup</a></li>
+							{% endif %}
+							  <!--<li><a href="#">Buy Tickets</a></li> -->	
 						  </ul>	
-						  -->		
+						  	
 					  </div>
 					  <div class="col-lg-6 col-sm-6 col-6 header-top-right">
 						<div class="header-social">
