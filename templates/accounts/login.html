@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
 </head>
-
 <body class="my-login-page">
     <section class="h-100">
         <div class="container h-100">
@@ -24,22 +23,30 @@
                             <form method="POST" class="my-login-validation" novalidate="">
                                 {% csrf_token %}
                                 <div class="form-group">
-                                    <label for="username">Username</label>
-                                    <input id="username" type="text" class="form-control" name="username" value="" required autofocus>
+                                    <label for="username">Username or Email</label>
+                                    <input id="username" type="text" class="form-control" name="username" required autofocus>
                                     <div class="invalid-feedback">
-                                        Username is invalid
+                                        {% if form.username.errors %}
+                                            {{ form.username.errors }}
+                                        {% else %}
+                                            Username or email is invalid
+                                        {% endif %}
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="password">Password
-                                        <a href="forgot.html" class="float-right">
+                                        <a href="{% url 'accounts:forgot' %}" class="float-right">
                                             Forgot Password?
                                         </a>
                                     </label>
                                     <input id="password" type="password" class="form-control" name="password" required data-eye>
                                     <div class="invalid-feedback">
-                                        Password is required
+                                        {% if form.password.errors %}
+                                            {{ form.password.errors }}
+                                        {% else %}
+                                            Password is required
+                                        {% endif %}
                                     </div>
                                 </div>
 
