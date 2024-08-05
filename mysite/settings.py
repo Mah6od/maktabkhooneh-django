@@ -54,6 +54,12 @@ INSTALLED_APPS = [
     'captcha',
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'accounts.backends.EmailOrUsernameModelBackend',  # custom backend
+    'django.contrib.auth.backends.ModelBackend',      # Default backend
+]
+
+
 # sites framework
 SITE_ID = 2
 
