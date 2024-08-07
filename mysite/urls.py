@@ -29,6 +29,7 @@ sitemaps = {
 }
 
 urlpatterns = [
+    path(r'', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
     # urls , view, name
     path('', include("website.urls")),
