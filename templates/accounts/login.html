@@ -22,41 +22,49 @@
                             <h4 class="card-title">Login</h4>
                             <form method="POST" class="my-login-validation" novalidate="">
                                 {% csrf_token %}
+                                
+                                <!-- Display non-field errors here -->
+                                {% if form.non_field_errors %}
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ form.non_field_errors }}
+                                    </div>
+                                {% endif %}
+                                
                                 <div class="form-group">
                                     <label for="username">Username or Email</label>
-                                    <input id="username" type="text" class="form-control" name="username" required autofocus>
+                                    <input id="username" type="text" class="form-control {% if form.username.errors %}is-invalid{% endif %}" name="username" required autofocus>
                                     <div class="invalid-feedback">
                                         {% if form.username.errors %}
-                                            {{ form.username.errors }}
+                                            {{ form.username.errors.0 }}
                                         {% else %}
                                             Username or email is invalid
                                         {% endif %}
                                     </div>
                                 </div>
-
+                        
                                 <div class="form-group">
                                     <label for="password">Password
                                         <a href="{% url 'accounts:forgot' %}" class="float-right">
                                             Forgot Password?
                                         </a>
                                     </label>
-                                    <input id="password" type="password" class="form-control" name="password" required data-eye>
+                                    <input id="password" type="password" class="form-control {% if form.password.errors %}is-invalid{% endif %}" name="password" required data-eye>
                                     <div class="invalid-feedback">
                                         {% if form.password.errors %}
-                                            {{ form.password.errors }}
+                                            {{ form.password.errors.0 }}
                                         {% else %}
                                             Password is required
                                         {% endif %}
                                     </div>
                                 </div>
-
+                        
                                 <div class="form-group">
                                     <div class="custom-checkbox custom-control">
                                         <input type="checkbox" name="remember" id="remember" class="custom-control-input">
                                         <label for="remember" class="custom-control-label">Remember Me</label>
                                     </div>
                                 </div>
-
+                        
                                 <div class="form-group m-0">
                                     <button type="submit" class="btn btn-primary btn-block">
                                         Login
@@ -67,6 +75,7 @@
                                 </div>
                             </form>
                         </div>
+                        
                     </div>
                     <div class="footer">
                         Copyright &copy; 2017 &mdash; Your Company 
