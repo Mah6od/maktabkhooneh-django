@@ -5,11 +5,6 @@ from django.contrib.auth.decorators import login_required
 from .forms import CustomUserCreationForm, CustomAuthenticationForm
 from django.contrib.auth.models import User
 
-
-from django.contrib.auth import authenticate, login
-from django.shortcuts import render, redirect
-from .forms import CustomAuthenticationForm
-
 def login_view(request):
     if request.method == 'POST':
         form = CustomAuthenticationForm(request=request, data=request.POST)
@@ -22,6 +17,10 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 return redirect('/')
+            
+            else:
+                # Invalid credentials, add a non-field error
+                form.add_error(None, 'Invalid username or password.')
     else:
         form = CustomAuthenticationForm()
 
